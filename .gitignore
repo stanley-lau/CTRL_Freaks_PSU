@@ -1,0 +1,45 @@
+# ===== Altium Designer =====
+# Project outputs
+Project Outputs/
+History/
+__Previews/
+
+# Generated outputs
+*.OutJob
+*.Log
+*.Rpt
+*.Rep
+*.tmp
+*.bak
+*.bkp
+
+# Altium cache / temp
+*.SchDocPreview
+*.PcbDocPreview
+*.cache
+*.dch
+*.ddx
+*.net
+*.erc
+*.drc
+*.lck
+
+# Database & backup files
+*.mdb
+*.ldb
+
+# Windows junk
+Thumbs.db
+Desktop.ini
+
+# Altium Workspace
+*.Workspace
+
+# Gerbers, NC Drill (optional – your choice)
+# Uncomment if you don't want generated manufacturing files
+# *.GTL
+# *.GBL
+# *.GTO
+# *.GBO
+# *.TXT
+# *.DRL
