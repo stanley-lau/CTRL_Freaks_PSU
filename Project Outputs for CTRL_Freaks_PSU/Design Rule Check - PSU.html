@@ -1,0 +1,420 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD25\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">19/02/2026</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">3:31:53 pm</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc">C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">24</td></tr>
+</table>
+</td>
+</table><a name="ID3PTJUOHMLEP4B2QBIPJTJQWZABUOPRGCU5JIM5IX0BRS0YHK1QOJ"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXVTAD5AW0045KCTMD52EXDHN3GMQNBJUXALJPAIBNBGJVVON0K3B">Clearance Constraint (Gap=0.152mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1OBZ0OXE1KDKEK4WZ1N44DXA0JDZYRRLLZ4A02ESHCAJZRNACPMI">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPNIQRWQZBNWSIZ2GL24OPP3JBKKOEJIBJLFYRZONU1CDR4FKBJPE">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDC5WS5UB40L4TC4LCQ03Y2DM0MHMLNEKOGBJK2MIXAKLDJZLBGTZH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDODHFPZQWPY3ODCXJ5FE4Q340CBHUHACIGKZUMABZEJA5JIYN4NXB">Width Constraint (Min=0.15mm) (Max=25.4mm) (Preferred=0.3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDM3BX4B3I3JNOGOXYY4EBVOPWAOYDUN052YQ13UHVQ4RUDJNCMKUM">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSKKMLFDH5N0LELI1512TIEY0AFWD5LNLZ2GRR5LOIWQP42H2PB5M">Minimum Annular Ring (Minimum=0.15mm) (All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZ141G10VOGMQBWGRY0DFGDET0QTDXOGMDNZ12JEOHX42CQ2XVZM">Hole Size Constraint (Min=0.3mm) (Max=6.2mm) (All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID13PPRIDG4JGKGHOGEESHP5U0HBTIOYNVLVMVJKE2TU0NXX3DEWRH">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDT2IJLT2DWHLLBUM4HIJBDFNZP2CNE1LHJ4GQUF4ZM42I2SPHW5B">Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNTFBK2VNHA04H3QH3O2UF4J3WHBIRHTN0KKPX0CXWVV4V3OI2H5N">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</a></td>
+<td class="column2">5</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUMOW55JACSC4EPGZE3FZ5B32RPI3DENITG40U3PY1H3WU1KBUSIC">Silk to Silk (Clearance=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3EM1MLB0ZIJBEUWMJUCVAOQ5PNR4L2ELGSWWIK1ZZWRC5HV24SM">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1QMPB3C51XKPNOVWXRNYRSJO5GNSQFJFQEVAIAN1QJV2OPTCWKHN">Board Clearance Constraint (Gap=0mm) (All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDW3T4DM1FRYFRJ5BZQHJPVNK5YE0Y05WMW5C31TJ5PJNIY1GT14QP">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">24</td>
+</tr>
+</table><br><a name="IDSKKMLFDH5N0LELI1512TIEY0AFWD5LNLZ2GRR5LOIWQP42H2PB5M"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Annular Ring (Minimum=0.15mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1077.289mil|Location2.X=1084.444mil|Location1.Y=1591.343mil|Location2.Y=1598.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1077.289mil|Location2.X=1084.444mil|Location1.Y=1591.343mil|Location2.Y=1598.499mil|Absolute=True">Minimum Annular Ring: (0.05mm &lt; 0.15mm) Pad U3-22(27.454mm,40.386mm) on Multi-Layer (Annular Ring=0.05mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1047.761mil|Location2.X=1054.916mil|Location1.Y=1621.855mil|Location2.Y=1629.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1047.761mil|Location2.X=1054.916mil|Location1.Y=1621.855mil|Location2.Y=1629.011mil|Absolute=True">Minimum Annular Ring: (0.05mm &lt; 0.15mm) Pad U3-23(26.704mm,41.161mm) on Multi-Layer (Annular Ring=0.05mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1047.761mil|Location2.X=1054.916mil|Location1.Y=1591.343mil|Location2.Y=1598.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1047.761mil|Location2.X=1054.916mil|Location1.Y=1591.343mil|Location2.Y=1598.499mil|Absolute=True">Minimum Annular Ring: (0.05mm &lt; 0.15mm) Pad U3-24(26.704mm,40.386mm) on Multi-Layer (Annular Ring=0.05mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1047.761mil|Location2.X=1054.916mil|Location1.Y=1560.832mil|Location2.Y=1567.987mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1047.761mil|Location2.X=1054.916mil|Location1.Y=1560.832mil|Location2.Y=1567.987mil|Absolute=True">Minimum Annular Ring: (0.05mm &lt; 0.15mm) Pad U3-25(26.704mm,39.611mm) on Multi-Layer (Annular Ring=0.05mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1006.422mil|Location2.X=1013.578mil|Location1.Y=1621.855mil|Location2.Y=1629.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1006.422mil|Location2.X=1013.578mil|Location1.Y=1621.855mil|Location2.Y=1629.011mil|Absolute=True">Minimum Annular Ring: (0.05mm &lt; 0.15mm) Pad U3-26(25.654mm,41.161mm) on Multi-Layer (Annular Ring=0.05mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1006.422mil|Location2.X=1013.578mil|Location1.Y=1591.343mil|Location2.Y=1598.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1006.422mil|Location2.X=1013.578mil|Location1.Y=1591.343mil|Location2.Y=1598.499mil|Absolute=True">Minimum Annular Ring: (0.05mm &lt; 0.15mm) Pad U3-27(25.654mm,40.386mm) on Multi-Layer (Annular Ring=0.05mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1006.422mil|Location2.X=1013.578mil|Location1.Y=1560.832mil|Location2.Y=1567.987mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1006.422mil|Location2.X=1013.578mil|Location1.Y=1560.832mil|Location2.Y=1567.987mil|Absolute=True">Minimum Annular Ring: (0.05mm &lt; 0.15mm) Pad U3-28(25.654mm,39.611mm) on Multi-Layer (Annular Ring=0.05mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=976.895mil|Location2.X=984.05mil|Location1.Y=1591.343mil|Location2.Y=1598.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=976.895mil|Location2.X=984.05mil|Location1.Y=1591.343mil|Location2.Y=1598.499mil|Absolute=True">Minimum Annular Ring: (0.05mm &lt; 0.15mm) Pad U3-29(24.904mm,40.386mm) on Multi-Layer (Annular Ring=0.05mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZ141G10VOGMQBWGRY0DFGDET0QTDXOGMDNZ12JEOHX42CQ2XVZM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.3mm) (Max=6.2mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1076.304mil|Location2.X=1085.428mil|Location1.Y=1585.438mil|Location2.Y=1594.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1076.304mil|Location2.X=1085.428mil|Location1.Y=1585.438mil|Location2.Y=1594.562mil|Absolute=True">Hole Size Constraint: (0.2mm &lt; 0.3mm) Pad U3-22(27.454mm,40.386mm) on Multi-Layer Actual Hole Size = 0.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1046.777mil|Location2.X=1055.901mil|Location1.Y=1615.95mil|Location2.Y=1625.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1046.777mil|Location2.X=1055.901mil|Location1.Y=1615.95mil|Location2.Y=1625.074mil|Absolute=True">Hole Size Constraint: (0.2mm &lt; 0.3mm) Pad U3-23(26.704mm,41.161mm) on Multi-Layer Actual Hole Size = 0.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1046.777mil|Location2.X=1055.901mil|Location1.Y=1585.438mil|Location2.Y=1594.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1046.777mil|Location2.X=1055.901mil|Location1.Y=1585.438mil|Location2.Y=1594.562mil|Absolute=True">Hole Size Constraint: (0.2mm &lt; 0.3mm) Pad U3-24(26.704mm,40.386mm) on Multi-Layer Actual Hole Size = 0.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1046.777mil|Location2.X=1055.901mil|Location1.Y=1554.926mil|Location2.Y=1564.05mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1046.777mil|Location2.X=1055.901mil|Location1.Y=1554.926mil|Location2.Y=1564.05mil|Absolute=True">Hole Size Constraint: (0.2mm &lt; 0.3mm) Pad U3-25(26.704mm,39.611mm) on Multi-Layer Actual Hole Size = 0.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1005.438mil|Location2.X=1014.562mil|Location1.Y=1615.95mil|Location2.Y=1625.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1005.438mil|Location2.X=1014.562mil|Location1.Y=1615.95mil|Location2.Y=1625.074mil|Absolute=True">Hole Size Constraint: (0.2mm &lt; 0.3mm) Pad U3-26(25.654mm,41.161mm) on Multi-Layer Actual Hole Size = 0.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1005.438mil|Location2.X=1014.562mil|Location1.Y=1585.438mil|Location2.Y=1594.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1005.438mil|Location2.X=1014.562mil|Location1.Y=1585.438mil|Location2.Y=1594.562mil|Absolute=True">Hole Size Constraint: (0.2mm &lt; 0.3mm) Pad U3-27(25.654mm,40.386mm) on Multi-Layer Actual Hole Size = 0.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1005.438mil|Location2.X=1014.562mil|Location1.Y=1554.926mil|Location2.Y=1564.05mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1005.438mil|Location2.X=1014.562mil|Location1.Y=1554.926mil|Location2.Y=1564.05mil|Absolute=True">Hole Size Constraint: (0.2mm &lt; 0.3mm) Pad U3-28(25.654mm,39.611mm) on Multi-Layer Actual Hole Size = 0.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=975.91mil|Location2.X=985.034mil|Location1.Y=1585.438mil|Location2.Y=1594.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=975.91mil|Location2.X=985.034mil|Location1.Y=1585.438mil|Location2.Y=1594.562mil|Absolute=True">Hole Size Constraint: (0.2mm &lt; 0.3mm) Pad U3-29(24.904mm,40.386mm) on Multi-Layer Actual Hole Size = 0.2mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDNTFBK2VNHA04H3QH3O2UF4J3WHBIRHTN0KKPX0CXWVV4V3OI2H5N"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=880.471mil|Location2.Y=884.096mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=880.471mil|Location2.Y=884.096mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad H1-10(40.702mm,22.92mm) on Top Layer And Track (41.46mm,9.025mm)(41.46mm,47.025mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=1280.471mil|Location2.Y=1284.096mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=1280.471mil|Location2.Y=1284.096mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad H1-2(40.602mm,33.08mm) on Top Layer And Track (41.46mm,9.025mm)(41.46mm,47.025mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=1180.471mil|Location2.Y=1184.096mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=1180.471mil|Location2.Y=1184.096mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad H1-4(40.602mm,30.54mm) on Top Layer And Track (41.46mm,9.025mm)(41.46mm,47.025mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=1080.471mil|Location2.Y=1084.096mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=1080.471mil|Location2.Y=1084.096mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad H1-6(40.602mm,28mm) on Top Layer And Track (41.46mm,9.025mm)(41.46mm,47.025mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=980.471mil|Location2.Y=984.096mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1630.484mil|Location2.X=1634.109mil|Location1.Y=980.471mil|Location2.Y=984.096mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad H1-8(40.602mm,25.46mm) on Top Layer And Track (41.46mm,9.025mm)(41.46mm,47.025mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID1QMPB3C51XKPNOVWXRNYRSJO5GNSQFJFQEVAIAN1QJV2OPTCWKHN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1925.795mil|Location2.X=1933.461mil|Location1.Y=1847.527mil|Location2.Y=1855.193mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1925.795mil|Location2.X=1933.461mil|Location1.Y=1847.527mil|Location2.Y=1855.193mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (41.46mm,47.025mm)(49.46mm,47.025mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1926.659mil|Location2.X=1934.325mil|Location1.Y=351.464mil|Location2.Y=359.13mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1926.659mil|Location2.X=1934.325mil|Location1.Y=351.464mil|Location2.Y=359.13mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (41.46mm,9.025mm)(49.46mm,9.025mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1943.424mil|Location2.X=1951.09mil|Location1.Y=1099.495mil|Location2.Y=1107.162mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\CTRL_Freaks_PSU\PSU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1943.424mil|Location2.X=1951.09mil|Location1.Y=1099.495mil|Location2.Y=1107.162mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (49.46mm,9.025mm)(49.46mm,47.025mm) on Top Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
