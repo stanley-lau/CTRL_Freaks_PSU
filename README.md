@@ -6,7 +6,7 @@ This repository contains the design for the Power Supply Unit (PSU) PCB develope
 The PSU PCB provides a robust and configurable power source, capable of switching between buck (step-down) and boost (step-up) conversion modes to deliver the precise voltages and high currents required by the payload.
 
 ## Features
-- **Regulated 3V3 Output** using **AP3445/L** for MCU, sensors, and Beacon
+- **Regulated 3V3 Output** using **AP3445/L** for the MCU, and Beacon PCB
 - **Efficient Conversion Components** rated for **High-Current Capability**: up to **5V @ 10A**
   - Boost: **TPS61088**  
   - Buck: **TPS56A37RPAR**
@@ -18,7 +18,6 @@ The PSU PCB provides a robust and configurable power source, capable of switchin
 | 3.3 V regulated output | AP3445/L       | LDO for MCU/sensor logic         |
 | Boost converter        | TPS61088       | High-efficiency step-up to 5V    |
 | Buck converter         | TPS56A37RPAR   | High-efficiency step-down for 5V |
-| Output power (Coil)    | 5V / 10A       | High current for plume mechanism |
 
 
 ## Usage
